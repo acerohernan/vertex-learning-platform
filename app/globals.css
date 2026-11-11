@@ -15,6 +15,16 @@
   --color-primary-600: #ea580c;
   --color-primary-700: #c2410c;
 
+  /* Product accent sampled from the home reference */
+  --color-accent-50: #fdf4ef;
+  --color-accent-100: #fbe8df;
+  --color-accent-200: #f4d3c5;
+  --color-accent-300: #eda78e;
+  --color-accent-400: #e88a68;
+  --color-accent-500: #e46d48;
+  --color-accent-600: #d25f3c;
+  --color-accent-700: #b94e2f;
+
   /* Vertex neutral palette */
   --color-neutral-50: #fafafc;
   --color-neutral-100: #f1f5f9;
@@ -101,4 +111,28 @@
   :focus-visible {
     outline: none;
   }
+}
+
+/* Fine diagonal paper hatch used in the home page gutters. */
+.paper-hatch {
+  background-image: repeating-linear-gradient(
+    115deg,
+    transparent 0,
+    transparent 6px,
+    #f1e6de 6px,
+    #f1e6de 7px
+  );
+}
+
+/* Soft gradient bars used by the home page footer art. */
+.footer-bar {
+  border-radius: 6px 6px 0 0;
+  background-image: linear-gradient(
+    to top,
+    #e46d48 0%,
+    #f0a184 55%,
+    rgba(240, 161, 132, 0) 100%
+  );
+  filter: blur(2.5px);
+  opacity: 0.9;
 }

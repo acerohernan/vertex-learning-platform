@@ -214,7 +214,7 @@ function ColorSwatch({
 }
 
 export const metadata = {
-  title: "Design System · Vertex",
+  title: "Design System",
   description:
     "The Vertex design system: colors, typography, spacing, radii, shadows, icons, controls, feedback, cards, navigation and principles.",
 };

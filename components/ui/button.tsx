@@ -2,12 +2,17 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-export type ButtonVariant = "primary" | "secondary" | "tertiary" | "text";
-export type ButtonSize = "md" | "lg";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "text"
+  | "accent";
+export type ButtonSize = "md" | "lg" | "xl";
 export type ButtonState = "default" | "hover" | "disabled";
 
 const base =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-primary-200 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none";
 
 const variantStyles: Record<
   ButtonVariant,
@@ -35,6 +40,11 @@ const variantStyles: Record<
     hover: "text-primary-700",
     disabled: "text-primary-300",
   },
+  accent: {
+    default: "bg-accent-500 text-white hover:bg-accent-600",
+    hover: "bg-accent-600 text-white",
+    disabled: "bg-accent-100 text-accent-300",
+  },
 };
 
 export function buttonVariants({
@@ -53,10 +63,18 @@ export function buttonVariants({
       ? "h-11 px-0 text-sm"
       : size === "md"
         ? "h-9 px-3 text-sm"
-        : "h-11 px-4 text-sm";
+        : size === "xl"
+          ? "h-14 px-7 text-base"
+          : "h-11 px-4 text-sm";
+
+  const focusRing =
+    variant === "accent"
+      ? "focus-visible:ring-accent-200"
+      : "focus-visible:ring-primary-200";
 
   return cn(
     base,
+    focusRing,
     sizing,
     variantStyles[variant][state],
     state === "disabled" && "pointer-events-none",
