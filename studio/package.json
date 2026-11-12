@@ -1,0 +1,25 @@
+{
+  "name": "vertex-studio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity graphql deploy",
+    "schema-deploy": "sanity schema deploy"
+  },
+  "dependencies": {
+    "@sanity/icons": "^3.5.8",
+    "@sanity/vision": "^5.31.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sanity": "^5.31.2",
+    "styled-components": "^6.6.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}
