@@ -12,7 +12,6 @@ export const projectId = assertValue(
 )
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
-  console.log("ENV VARIABLES", process.env);
   if (v === undefined) {
     throw new Error(errorMessage)
   }
