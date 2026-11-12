@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Bell } from "lucide-react";
-import avatarImage from "@/public/avatar-learner.jpg";
+import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
+import { Suspense } from "react";
 import { VertexLogo } from "@/components/brand/logo";
 
 const navItems = [
@@ -56,20 +56,29 @@ export function SiteHeader() {
               className="h-[22px] w-[22px]"
             />
           </button>
-          <button
-            type="button"
-            aria-label="Account"
-            className="rounded-full focus-visible:ring-2 focus-visible:ring-accent-200 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
-          >
-            <Image
-              src={avatarImage}
-              alt=""
-              width={56}
-              height={56}
-              priority
-              className="h-11 w-11 rounded-full object-cover lg:h-14 lg:w-14"
-            />
-          </button>
+          <Suspense>
+            <Show when="signed-out">
+              <SignInButton>
+                <button
+                  type="button"
+                  className="rounded-sm px-4 py-2 text-[15px] font-medium text-neutral-700 transition-colors hover:text-accent-600 focus-visible:ring-2 focus-visible:ring-accent-200"
+                >
+                  Sign in
+                </button>
+              </SignInButton>
+              <SignUpButton>
+                <button
+                  type="button"
+                  className="rounded-sm bg-accent-600 px-4 py-2 text-[15px] font-medium text-white transition-colors hover:bg-accent-700 focus-visible:ring-2 focus-visible:ring-accent-200"
+                >
+                  Sign up
+                </button>
+              </SignUpButton>
+            </Show>
+            <Show when="signed-in">
+              <UserButton />
+            </Show>
+          </Suspense>
         </div>
       </div>
     </header>
